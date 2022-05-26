@@ -28,6 +28,20 @@ gst-launch-1.0 videotestsrc num-buffers=100 ! videoconvert ! video/x-raw ! x264e
 
 
 
+使用gst-instpect查看框架组件具体信息，或者所有相关组件
+
+```
+gst-inspect-1.0 x264enc
+```
+
+
+
+```
+gst-inspect-1.0| grep "demux"
+```
+
+
+
 ### Repo文件介绍
 
 cpp文件夹存放了一些c++代码框架
