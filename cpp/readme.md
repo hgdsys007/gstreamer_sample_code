@@ -62,6 +62,15 @@ https://gstreamer.freedesktop.org/documentation/application-development/advanced
 使用如下代码编译
 
 ```
-g++ rtsp_appsink.cpp -o rtsp_appsink `pkg-config --cflags --libs gstreamer-1.0 opencv4 gstreamer-app-1.0 glib-2.0 gobject-2.0
+g++ rtsp_appsink.cpp -o rtsp_appsink `pkg-config --cflags --libs gstreamer-1.0 opencv4 gstreamer-app-1.0 glib-2.0 gobject-2.0`
 ```
 
+### rtspToJpg.cpp
+
+从rtsp读取到appsink，并使用opencv保存为一张jpg图片
+
+使用如下代码编译
+
+```
+ g++ rtspToJpg.cpp -o rtspToJpg `pkg-config --cflags --libs gstreamer-1.0 opencv4 gstreamer-app-1.0 glib-2.0 gobject-2.0`
+```
