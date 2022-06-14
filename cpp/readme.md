@@ -50,7 +50,7 @@ gst-launch-1.0 rtspsrc location=rtsp://admin:seu228228@192.168.1.64 latency=100 
 
 
 
-### rtsp_appsin.cpp
+### rtsp_appsink.cpp
 
 
 appsrc和appsink教程可以参考官网教程，地址如下：
@@ -65,6 +65,10 @@ https://gstreamer.freedesktop.org/documentation/application-development/advanced
 g++ rtsp_appsink.cpp -o rtsp_appsink `pkg-config --cflags --libs gstreamer-1.0 opencv4 gstreamer-app-1.0 glib-2.0 gobject-2.0`
 ```
 
+
+
+
+
 ### rtspToJpg.cpp
 
 从rtsp读取到appsink，并使用opencv保存为一张jpg图片
@@ -74,3 +78,20 @@ g++ rtsp_appsink.cpp -o rtsp_appsink `pkg-config --cflags --libs gstreamer-1.0 o
 ```
  g++ rtspToJpg.cpp -o rtspToJpg `pkg-config --cflags --libs gstreamer-1.0 opencv4 gstreamer-app-1.0 glib-2.0 gobject-2.0`
 ```
+
+
+
+### rtspToappsink_ptr_rtspCheck.cpp
+
+基于rtspToJpg.cpp文件，使用指针传递数据，对于插件系统开发更加有好。同时增加了报错机制，在pipeline没有内容输出时进行报错
+
+```
+  ret = gst_element_get_state (data.pipeline, NULL, NULL, -1);
+  // cout<<ret<<endl;
+  if (ret == GST_STATE_CHANGE_FAILURE) {
+    g_printerr ("Unable to set the pipeline to the playing state.\n");
+    gst_object_unref (data.pipeline);
+    return -1;
+  }
+```
+
