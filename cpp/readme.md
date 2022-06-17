@@ -86,6 +86,7 @@ g++ rtsp_appsink.cpp -o rtsp_appsink `pkg-config --cflags --libs gstreamer-1.0 o
 基于rtspToJpg.cpp文件，使用指针传递数据，对于插件系统开发更加有好。同时增加了报错机制，在pipeline没有内容输出时进行报错
 
 ```
+  // gst_element_get_state会让ret变为待改变状态，gst_element_get_state会等待ret真正改变
   ret = gst_element_get_state (data.pipeline, NULL, NULL, -1);
   // cout<<ret<<endl;
   if (ret == GST_STATE_CHANGE_FAILURE) {
@@ -94,4 +95,6 @@ g++ rtsp_appsink.cpp -o rtsp_appsink `pkg-config --cflags --libs gstreamer-1.0 o
     return -1;
   }
 ```
+
+
 
